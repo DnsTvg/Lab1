@@ -1,19 +1,25 @@
+import gcodeGenerator.generate
+import menu.other as o
 import time
-def start():
-    print("1 - ....\n 2 - .... \n 3 - ....\n")
-    choiсe_handler(input())
 
-def choiсe_handler(choice):
+
+def show():
+    print(o.read_file("menu.txt"))
+    choice = input("Оберіть пункт меню: ")
     if choice == "1":
-        pass
+        gcodeGenerator.generate.rectangle(o.set_filename())
+        show()
     elif choice == "2":
-        pass
+        gcodeGenerator.generate.circle(o.set_filename(), o.set_radius())
+        show()
     elif choice == "3":
-        pass
+        gcodeGenerator.generate.cube(o.set_filename())
+        show()
     elif choice == "4":
         exit_program()
     else:
         print("Error input, choose number from 1 to 4\n")
+        show()
 
 def exit_program():
     print("Closing ", end="")
@@ -24,3 +30,7 @@ def exit_program():
     time.sleep(0.25)
     print(". ", end="")
     exit()
+
+
+
+

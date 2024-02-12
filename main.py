@@ -1,3 +1,3 @@
 import menu.scripts
-while True:
-    menu.scripts.start()
+
+menu.scripts.show()
