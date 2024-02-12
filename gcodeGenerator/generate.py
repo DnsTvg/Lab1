@@ -1,5 +1,7 @@
 import math
 
+import logging
+
 width = 150
 height = 100
 layer_height = 0.2
@@ -9,6 +11,8 @@ def rectangle(filename):
     """
     Генерує G-код для друку прямокутника з вказаними розмірами і параметрами.
     """
+
+    logging.debug('Called rectangle')
     filename = filename.replace(".gcode","") + ".gcode"
     # Відкриваємо файл для запису G-коду
     with open(filename, 'w') as f:

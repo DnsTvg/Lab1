@@ -17,6 +17,7 @@ def show():
         show()
     elif choice == "4":
         exit_program()
+        return
     else:
         print("Error input, choose number from 1 to 4\n")
         show()
@@ -29,7 +30,7 @@ def exit_program():
     print(". ", end="")
     time.sleep(0.25)
     print(". ", end="")
-    exit()
+    return
 
 
 
