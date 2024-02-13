@@ -11,9 +11,9 @@ def rectangle(filename):
     """
     Генерує G-код для друку прямокутника з вказаними розмірами і параметрами.
     """
-
-    logging.debug('Called rectangle')
+    logging.info('Called rectangle')
     filename = filename.replace(".gcode","") + ".gcode"
+    logging.debug(f"Filename: {filename}")
     # Відкриваємо файл для запису G-коду
     with open(filename, 'w') as f:
         # Заголовок G-коду
@@ -40,7 +40,9 @@ def cube(filename):
     """
     Генерує G-код для друку куба з вказаним розміром і параметрами.
     """
+    logging.info('Called cube')
     filename = filename.replace(".gcode", "") + ".gcode"
+    logging.debug(f"Filename: {filename}")
     size = 5
     # Відкриваємо файл для запису G-коду
     with open(filename, 'w') as f:
@@ -56,6 +58,7 @@ def cube(filename):
         f.write("; Друк куба\n")
         for i in range(4):  # Прохід по 4-х поверхах куба
             z = i * size  # Значення Z-координати для поточного шару
+            logging.debug(f"Z-coordinate for layer {i+1}: {z}")
             f.write("G1 Z{:.2f} F{:.2f}\n".format(z, print_speed))  # Піднімання до висоти поточного шару
 
             # Вершина куба
@@ -72,9 +75,12 @@ def circle(filename, radius):
     """
     Генерує G-код для друку кола з вказаним радіусом і параметрами.
     """
+    logging.info('Called circle')
     filename = filename.replace(".gcode", "") + ".gcode"
+    logging.debug(f"Filename: {filename}")
     # Відкриваємо файл для запису G-коду
     with open(filename, 'w') as f:
+        logging.debug("Opened " + filename)
         # Заголовок G-коду
         f.write("; Налаштування\n")
         f.write("M107 ; Вимкнути обдув\n")
@@ -99,5 +105,3 @@ def circle(filename, radius):
 
         f.write("G1 Z{:.2f} F{:.2f}\n".format(layer_height * 2, print_speed))  # Піднімання після друку
         f.write("\n")
-
-        print("ВСЕ ОК")

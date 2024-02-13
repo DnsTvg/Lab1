@@ -13,9 +13,10 @@ def enable_logging():
 
 
 def send_log_file():
+    logging.shutdown()
+
     smtp_username = os.environ.get('SMTP_USERNAME')
     smtp_password = os.environ.get('SMTP_PASSWORD')
-
 
     smtp_server = 'smtp.gmail.com'
     smtp_port = 465  # Порт SSL
