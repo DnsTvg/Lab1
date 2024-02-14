@@ -18,7 +18,7 @@ def send_log_file():
     smtp_username = os.environ.get('SMTP_USERNAME')
     smtp_password = os.environ.get('SMTP_PASSWORD')
 
-    smtp_server = 'smtp.gmail.com'
+    smtp_server = 'smtp.ukr.net'
     smtp_port = 465  # Порт SSL
 
     # Заповнюємо дані листа
@@ -64,7 +64,6 @@ def send_log_file():
         server = smtplib.SMTP_SSL(smtp_server, smtp_port)
         server.login(smtp_username, smtp_password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
-        print("Лист відправлено успішно")
     except Exception as e:
         print("Помилка відправлення листа:", e)
     finally:
